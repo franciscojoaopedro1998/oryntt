@@ -6,6 +6,7 @@ import {
 	Scripts,
 } from "@tanstack/react-router";
 import { TanStackRouterDevtoolsPanel } from "@tanstack/react-router-devtools";
+import { NotFound } from "#/components/layout/NotFound";
 import { m } from "#/paraglide/messages";
 import { getLocale } from "#/paraglide/runtime";
 import TanStackQueryDevtools from "../integrations/tanstack-query/devtools";
@@ -88,6 +89,7 @@ export const Route = createRootRouteWithContext<MyRouterContext>()({
 			},
 		],
 	}),
+	notFoundComponent: NotFound,
 	shellComponent: RootDocument,
 });
 

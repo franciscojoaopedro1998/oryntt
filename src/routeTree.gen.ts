@@ -10,33 +10,43 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as PorqueOrynttRouteImport } from './routes/porque-oryntt'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const PorqueOrynttRoute = PorqueOrynttRouteImport.update({
+  id: '/porque-oryntt',
+  path: '/porque-oryntt',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/porque-oryntt': typeof PorqueOrynttRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/porque-oryntt': typeof PorqueOrynttRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/porque-oryntt': typeof PorqueOrynttRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/'
+  fullPaths: '/' | '/porque-oryntt'
   fileRoutesByTo: FileRoutesByTo
-  to: '/'
-  id: '__root__' | '/'
+  to: '/' | '/porque-oryntt'
+  id: '__root__' | '/' | '/porque-oryntt'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  PorqueOrynttRoute: typeof PorqueOrynttRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -48,11 +58,19 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/porque-oryntt': {
+      id: '/porque-oryntt'
+      path: '/porque-oryntt'
+      fullPath: '/porque-oryntt'
+      preLoaderRoute: typeof PorqueOrynttRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  PorqueOrynttRoute: PorqueOrynttRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
