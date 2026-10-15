@@ -1,16 +1,18 @@
-import { ArrowUpRight, Globe2 } from "lucide-react";
 import { Brand } from "#/components/brand/Brand";
 import { footerProductLinks, site, socials } from "#/data/site";
+import { useHomeHref } from "#/lib/home-href";
 import { m } from "#/paraglide/messages";
 
 export function Footer() {
 	const year = new Date().getFullYear();
+	const homeHref = useHomeHref();
 
 	const exploreLinks = [
-		{ href: "#inicio", label: m.nav_home() },
-		{ href: "#produtos", label: m.nav_products() },
-		{ href: "#sobre", label: m.footer_about_link() },
-		{ href: "#principios", label: m.footer_philosophy_link() },
+		{ href: homeHref("inicio"), label: m.nav_home() },
+		{ href: homeHref("produtos"), label: m.nav_products() },
+		{ href: homeHref("sobre"), label: m.footer_about_link() },
+		{ href: homeHref("principios"), label: m.footer_philosophy_link() },
+		{ href: "/porque-oryntt", label: m.footer_why_link() },
 	];
 
 	return (
@@ -40,16 +42,14 @@ export function Footer() {
 							target={link.href.startsWith("http") ? "_blank" : undefined}
 							rel={link.href.startsWith("http") ? "noreferrer" : undefined}
 						>
-							{link.label} <ArrowUpRight size={13} />
+							{link.label}
 						</a>
 					))}
 				</div>
 
 				<div className="footer-social">
 					<span className="footer-label">{m.footer_label_contact()}</span>
-					<a href={`mailto:${site.email}`}>
-						{site.email} <ArrowUpRight size={14} />
-					</a>
+					<a href={`mailto:${site.email}`}>{site.email}</a>
 					<div className="social-icons">
 						{socials.map(({ label, href, icon: Icon }) => (
 							<a key={label} href={href} aria-label={label}>
@@ -65,7 +65,7 @@ export function Footer() {
 					© {year} {site.fullName}. {m.footer_rights()}
 				</span>
 				<span>
-					<Globe2 size={14} /> {site.location} <i /> {site.tagline}
+					{site.location} · {site.tagline}
 				</span>
 			</div>
 		</footer>

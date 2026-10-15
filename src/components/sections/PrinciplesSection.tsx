@@ -11,24 +11,22 @@ export function PrinciplesSection() {
 		<section className="principles section-pad" id="principios">
 			<div className="container">
 				<SectionHeading
-					className="principles-heading"
 					eyebrow={m.principles_eyebrow()}
 					title={
 						<>
 							{m.principles_title_1()}
 							<br />
-							<span>{m.principles_title_2()}</span>
+							{m.principles_title_2()}
 						</>
 					}
 					description={m.principles_description()}
 				/>
 
 				<div className="principle-grid">
-					{principles.map((principle, index) => (
+					{principles.map((principle) => (
 						<PrincipleCard
 							key={`${principle.letter}-${principle.word}`}
 							principle={principle}
-							index={index}
 						/>
 					))}
 				</div>

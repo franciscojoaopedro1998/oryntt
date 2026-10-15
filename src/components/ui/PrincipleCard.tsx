@@ -1,20 +1,25 @@
+import { motion } from "motion/react";
 import type { Principle } from "#/data/principles";
 
 interface PrincipleCardProps {
 	principle: Principle;
-	index: number;
 }
 
-export function PrincipleCard({ principle, index }: PrincipleCardProps) {
+export function PrincipleCard({ principle }: PrincipleCardProps) {
 	return (
-		<article className="principle">
-			<div className="principle-letter">{principle.letter}</div>
-			<div className="principle-index">
-				{String(index + 1).padStart(2, "0")}
-			</div>
+		<motion.article
+			className="principle"
+			initial={{ opacity: 0, y: 24 }}
+			whileInView={{ opacity: 1, y: 0 }}
+			viewport={{ once: true, amount: 0.4 }}
+			transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
+		>
+			<span className="principle-letter" aria-hidden="true">
+				{principle.letter}
+			</span>
 			<h3>{principle.word}</h3>
-			{principle.pt ? <div className="principle-pt">{principle.pt}</div> : null}
+			{principle.pt ? <p className="principle-pt">{principle.pt}</p> : null}
 			<p>{principle.text}</p>
-		</article>
+		</motion.article>
 	);
 }

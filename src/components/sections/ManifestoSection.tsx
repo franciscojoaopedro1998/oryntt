@@ -1,4 +1,3 @@
-import { ManifestoArt } from "#/components/decor/ManifestoArt";
 import { Eyebrow } from "#/components/ui/Eyebrow";
 import { m } from "#/paraglide/messages";
 
@@ -7,17 +6,13 @@ export function ManifestoSection() {
 		<section className="manifesto">
 			<div className="container manifesto-inner">
 				<Eyebrow>{m.manifesto_eyebrow()}</Eyebrow>
-				<p>
+				<p className="manifesto-text">
 					{m.manifesto_p_1()}
 					<br />
-					<span>{m.manifesto_p_2()}</span>
+					{m.manifesto_p_2()}
 				</p>
-				<div className="manifesto-bottom">
-					<span /> {m.manifesto_bottom()}
-				</div>
+				<p className="manifesto-bottom">{m.manifesto_bottom()}</p>
 			</div>
-
-			<ManifestoArt />
 		</section>
 	);
 }

@@ -1,4 +1,10 @@
-import { Github, Instagram, Linkedin, type LucideIcon } from "lucide-react";
+import {
+	Github,
+	Instagram,
+	Linkedin,
+	type LucideIcon,
+	MessageCircle,
+} from "lucide-react";
 
 export interface SocialLink {
 	label: string;
@@ -19,10 +25,15 @@ export const site = {
 	location: "Angola",
 } as const;
 
+/** WhatsApp number in international format, digits only, for wa.me links. */
+export const whatsappNumber = "244937489012";
+export const whatsappLink = `https://wa.me/${whatsappNumber}`;
+
 export const socials: SocialLink[] = [
 	{ label: "LinkedIn", href: "https://www.linkedin.com/", icon: Linkedin },
 	{ label: "Instagram", href: "https://www.instagram.com/", icon: Instagram },
 	{ label: "GitHub", href: "https://github.com/", icon: Github },
+	{ label: "WhatsApp", href: whatsappLink, icon: MessageCircle },
 ];
 
 export type ContactSubjectId =
@@ -40,7 +51,7 @@ export interface ContactSubjectOption {
 /** Footer "Products" links — product-brand anchors (not translated). */
 export const footerProductLinks = [
 	{ label: "Yennda", href: "https://yennda.ao" },
-	{ label: "Mona", href: "https://mona-orpin.vercel.app/" },
+	{ label: "Mona", href: "https://www.mona.ao" },
 	{ label: "Tuntuka", href: "https://tuntuka.vercel.app/sobre" },
-	{ label: "Ondjango Pay", href: "#contacto" },
+	{ label: "Ondjango Pay", href: "https://ondjango-pay.vercel.app/" },
 ] as const;

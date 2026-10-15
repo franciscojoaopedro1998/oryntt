@@ -1,4 +1,4 @@
-import { ProductCard } from "#/components/ui/ProductCard";
+import { ProductRow } from "#/components/ui/ProductRow";
 import { SectionHeading } from "#/components/ui/SectionHeading";
 import { UpcomingCard } from "#/components/ui/UpcomingCard";
 import { productContent } from "#/data/products";
@@ -17,22 +17,25 @@ export function ProductsSection() {
 						<>
 							{m.products_title_1()}
 							<br />
-							<span>{m.products_title_2()}</span>
+							{m.products_title_2()}
 						</>
 					}
 					description={m.products_description()}
 				/>
 
-				<div className="product-grid">
-					{products.map((product) => (
-						<ProductCard key={product.name} product={product} />
+				<div className="product-list">
+					{products.map((product, index) => (
+						<ProductRow
+							key={product.name}
+							product={product}
+							reverse={index % 2 === 1}
+						/>
 					))}
-					<UpcomingCard />
 				</div>
 
-				<div className="products-foot">
-					<span className="live-dot" /> {m.products_foot()}
-				</div>
+				<UpcomingCard />
+
+				<p className="products-foot">{m.products_foot()}</p>
 			</div>
 		</section>
 	);

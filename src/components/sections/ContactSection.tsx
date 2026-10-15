@@ -1,7 +1,7 @@
-import { ArrowRight, ArrowUpRight, Mail, MapPin, Send } from "lucide-react";
+import { Mail, MapPin, MessageCircle, Send } from "lucide-react";
 import { type FormEvent, useState } from "react";
 import { Eyebrow } from "#/components/ui/Eyebrow";
-import { type ContactSubjectId, site } from "#/data/site";
+import { type ContactSubjectId, site, whatsappLink } from "#/data/site";
 import { m } from "#/paraglide/messages";
 
 interface ContactForm {
@@ -61,16 +61,27 @@ export function ContactSection() {
 					<h2>
 						{m.contact_title_1()}
 						<br />
-						<span>{m.contact_title_2()}</span>
+						{m.contact_title_2()}
 					</h2>
 					<p>{m.contact_p()}</p>
 
 					<a className="contact-email" href={`mailto:${site.email}`}>
-						<Mail size={18} /> {site.email} <ArrowUpRight size={16} />
+						<Mail size={18} aria-hidden="true" />
+						{site.email}
+					</a>
+
+					<a
+						className="contact-email"
+						href={whatsappLink}
+						target="_blank"
+						rel="noreferrer"
+					>
+						<MessageCircle size={18} aria-hidden="true" />
+						+244 937 489 012
 					</a>
 
 					<div className="contact-location">
-						<MapPin size={17} />
+						<MapPin size={17} aria-hidden="true" />
 						<span>
 							{site.location} <small>{m.global_ambition()}</small>
 						</span>
@@ -80,7 +91,7 @@ export function ContactSection() {
 				<form className="contact-form" onSubmit={handleSubmit}>
 					<div className="form-heading">
 						<span>{m.contact_form_title()}</span>
-						<Send size={18} />
+						<Send size={18} aria-hidden="true" />
 					</div>
 
 					<label>
@@ -141,8 +152,7 @@ export function ContactSection() {
 					</label>
 
 					<button className="button button-primary submit-button" type="submit">
-						{sent ? m.contact_submit_again() : m.contact_submit()}{" "}
-						<ArrowRight size={17} />
+						{sent ? m.contact_submit_again() : m.contact_submit()}
 					</button>
 
 					<p className="form-note">{m.contact_note()}</p>

@@ -1,20 +1,21 @@
-import { ArrowUpRight, Menu, X } from "lucide-react";
+import { Menu, X } from "lucide-react";
 import { useState } from "react";
 import { Brand } from "#/components/brand/Brand";
 import { LangSwitch } from "#/components/ui/LangSwitch";
 import { ThemeToggle } from "#/components/ui/ThemeToggle";
+import { useHomeHref } from "#/lib/home-href";
 import { m } from "#/paraglide/messages";
 
 export function Header() {
 	const [menuOpen, setMenuOpen] = useState(false);
 
 	const closeMenu = () => setMenuOpen(false);
+	const homeHref = useHomeHref();
 
 	const navLinks = [
-		{ href: "#inicio", label: m.nav_home() },
-		{ href: "#produtos", label: m.nav_products() },
-		{ href: "#sobre", label: m.nav_about() },
-		{ href: "#principios", label: m.nav_principles() },
+		{ href: homeHref("produtos"), label: m.nav_products() },
+		{ href: homeHref("sobre"), label: m.nav_about() },
+		{ href: homeHref("principios"), label: m.nav_principles() },
 	];
 
 	return (
@@ -53,8 +54,12 @@ export function Header() {
 
 					{/* The click handler only closes the mobile menu; navigation is a plain hash link */}
 					{/* biome-ignore lint/a11y/useValidAnchor: hash-section navigation link with menu close handler */}
-					<a className="nav-cta" href="#contacto" onClick={closeMenu}>
-						{m.nav_cta()} <ArrowUpRight size={15} />
+					<a
+						className="nav-cta"
+						href={homeHref("contacto")}
+						onClick={closeMenu}
+					>
+						{m.nav_cta()}
 					</a>
 				</nav>
 			</div>
