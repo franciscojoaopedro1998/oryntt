@@ -1,6 +1,5 @@
 import { Mail, MapPin, MessageCircle, Send } from "lucide-react";
 import { type FormEvent, useState } from "react";
-import { Eyebrow } from "#/components/ui/Eyebrow";
 import { type ContactSubjectId, site, whatsappLink } from "#/data/site";
 import { m } from "#/paraglide/messages";
 
@@ -57,7 +56,6 @@ export function ContactSection() {
 		<section className="contact section-pad" id="contacto">
 			<div className="container contact-layout">
 				<div className="contact-copy">
-					<Eyebrow>{m.contact_eyebrow()}</Eyebrow>
 					<h2>
 						{m.contact_title_1()}
 						<br />

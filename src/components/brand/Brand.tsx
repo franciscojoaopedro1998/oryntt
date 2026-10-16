@@ -1,3 +1,4 @@
+import { BrandMark } from "#/components/brand/BrandMark";
 import { useHomeHref } from "#/lib/home-href";
 import { cn } from "#/lib/utils";
 import { m } from "#/paraglide/messages";
@@ -15,13 +16,8 @@ export function Brand({ footer = false, className }: BrandProps) {
 			href={homeHref("inicio")}
 			aria-label={m.nav_aria_brand()}
 		>
-			<span className="brand-mark" aria-hidden="true">
-				<span />
-			</span>
-			<span className="brand-copy">
-				<strong>ORYNTT</strong>
-				<small>TECHNOLOGIES</small>
-			</span>
+			<BrandMark />
+			<span className="brand-word">RYNTT</span>
 		</a>
 	);
 }

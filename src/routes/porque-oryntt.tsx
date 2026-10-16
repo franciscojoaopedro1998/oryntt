@@ -6,19 +6,17 @@ import { productContent } from "#/data/products";
 import { whatsappLink } from "#/data/site";
 import { whyContent } from "#/data/why";
 import { useHomeHref } from "#/lib/home-href";
+import { pageHead } from "#/lib/seo";
 import { getLocale } from "#/paraglide/runtime";
 
 export const Route = createFileRoute("/porque-oryntt")({
 	head: () => {
 		const { meta } = whyContent[getLocale()];
-		return {
-			meta: [
-				{ title: meta.title },
-				{ name: "description", content: meta.description },
-				{ property: "og:title", content: meta.title },
-				{ property: "og:description", content: meta.description },
-			],
-		};
+		return pageHead({
+			path: "/porque-oryntt",
+			title: meta.title,
+			description: meta.description,
+		});
 	},
 	component: WhyPage,
 });
@@ -43,11 +41,7 @@ function WhyPage() {
 
 				<section className="why-reasons section-pad">
 					<div className="container">
-						<div className="section-heading">
-							<div>
-								<h2>{content.reasonsTitle}</h2>
-							</div>
-						</div>
+						<h2>{content.reasonsTitle}</h2>
 						<div className="why-reason-grid">
 							{content.reasons.map((reason) => (
 								<article className="why-reason" key={reason.title}>

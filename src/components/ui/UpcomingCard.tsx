@@ -7,8 +7,9 @@ export function UpcomingCard() {
 	return (
 		<div className="upcoming">
 			<div>
-				<p className="upcoming-badge">{upcoming.badge}</p>
-				<h3>{upcoming.title}</h3>
+				<h3>
+					{upcoming.title} <span>{upcoming.badge}</span>
+				</h3>
 				<p>{upcoming.description}</p>
 			</div>
 			<a className="button button-ghost" href="#contacto">

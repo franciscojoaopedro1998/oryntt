@@ -8,8 +8,25 @@ import { IntroSection } from "#/components/sections/IntroSection";
 import { ManifestoSection } from "#/components/sections/ManifestoSection";
 import { PrinciplesSection } from "#/components/sections/PrinciplesSection";
 import { ProductsSection } from "#/components/sections/ProductsSection";
+import { homeJsonLd, pageHead } from "#/lib/seo";
+import { m } from "#/paraglide/messages";
 
-export const Route = createFileRoute("/")({ component: HomePage });
+export const Route = createFileRoute("/")({
+	head: () => ({
+		...pageHead({
+			path: "/",
+			title: m.meta_title(),
+			description: m.meta_description(),
+		}),
+		scripts: [
+			{
+				type: "application/ld+json",
+				children: JSON.stringify(homeJsonLd()),
+			},
+		],
+	}),
+	component: HomePage,
+});
 
 function HomePage() {
 	return (

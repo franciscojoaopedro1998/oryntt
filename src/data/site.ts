@@ -19,6 +19,9 @@ export interface SocialLink {
  */
 export const site = {
 	name: "ORYNTT",
+	/** Production origin, no trailing slash. Canonical URLs, the sitemap and
+	 * social cards are built from it. */
+	url: "https://oryntt.ao",
 	fullName: "ORYNTT Technologies",
 	tagline: "Ideas into Impact.",
 	email: "hello@orynt.ao",
